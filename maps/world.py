@@ -36,12 +36,14 @@ class World:
 
     def print_rooms(self):
         rotated_room_grid = []
+
+
         for i in range(0, len(self.room_grid)):
             rotated_room_grid.append([None] * len(self.room_grid))
         for i in range(len(self.room_grid)):
             for j in range(len(self.room_grid[0])):
                 rotated_room_grid[len(self.room_grid[0]) - j - 1][i] = self.room_grid[i][j]
-        print("#####")
+        print(f'#####   {len(self.room_grid)}')
         str = ""
         for row in rotated_room_grid:
             all_null = True
@@ -85,3 +87,106 @@ class World:
             str += "#\n"
         print(str)
         print("#####")
+
+
+    def print_maze(self):
+        maze = []
+        for row in range(len(self.room_grid) -1 ):
+            str = ''
+            for col in range(len(self.room_grid) - 1):
+                # print(f' row[{row}]col[{col}] = {self.room_grid[row][col]}')
+                
+                if self.room_grid[row][col] == None:
+                    str += '***'
+
+                else:
+                    # str += f"{self.room.id}".zfill(3)
+                    room = self.room_grid[row][col].name.split()
+                    room = room[-1].zfill(3)
+                    # room = room.str(room[-1].zfill(3))
+                    print(f' room {room}')
+                    str += room
+            maze.append(str)
+        return maze
+
+
+        # rotated_room_grid = []
+        # for i in range(0, len(self.room_grid)):
+        #     rotated_room_grid.append([None] * len(self.room_grid))
+        # for i in range(len(self.room_grid)):
+        #     for j in range(len(self.room_grid[0])):
+        #         rotated_room_grid[len(self.room_grid[0]) - j - 1][i] = self.room_grid[i][j]
+        
+        # for row in range(0, 1):
+        #     for col in range(0, len(self.room_grid)):
+        #             for i in range(0, len(self.room_grid)):
+        #                 top_edge = '+'.join('+')
+        #             maze.append(top_edge)
+
+        print(f' grid:  {self.room_grid}')
+
+        print(f' \n\n')
+
+
+        print(f' grid:  {self.room_grid}')
+
+        # for row in range(0, ( (len(self.room_grid) + 1 ))):
+        #     for col in range(len(self.room_grid + 1)):
+        #         maze.append(('"' + '+' * 3(len(self.room_grid) + 1) + '"'))            
+        # print(maze)
+
+
+        # for item in self.room_grid:
+        #     maze.append(item)
+
+
+        # print(f'\n\n MAZE \n\n')
+        
+        # print(maze)    
+
+
+
+
+        # str = ""
+        # for row in rotated_room_grid:
+        #     all_null = True
+        #     for room in row:
+        #         if room is not None:
+        #             all_null = False
+        #             break
+        #     if all_null:
+        #         continue
+        #     # PRINT NORTH CONNECTION ROW
+        #     str += "#"
+        #     for room in row:
+        #         if room is not None and room.n_to is not None:
+        #             str += "  |  "
+        #         else:
+        #             str += "     "
+        #     str += "#\n"
+        #     # PRINT ROOM ROW
+        #     str += "#"
+        #     for room in row:
+        #         if room is not None and room.w_to is not None:
+        #             str += "-"
+        #         else:
+        #             str += " "
+        #         if room is not None:
+        #             str += f"{room.id}".zfill(3)
+        #         else:
+        #             str += "   "
+        #         if room is not None and room.e_to is not None:
+        #             str += "-"
+        #         else:
+        #             str += " "
+        #     str += "#\n"
+        #     # PRINT SOUTH CONNECTION ROW
+        #     str += "#"
+        #     for room in row:
+        #         if room is not None and room.s_to is not None:
+        #             str += "  |  "
+        #         else:
+        #             str += "     "
+        #     str += "#\n"
+        # print(str)
+        # print("#####")        
